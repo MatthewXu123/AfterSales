@@ -115,11 +115,11 @@ var TableInit = function() {
 			}, 
 			{
 				field : 'description',
-				title : '说明',
+				title : '描述',
 				sortable:true,
 				editable : {
 					type : 'text',
-					title : '说明',
+					title : '描述',
 					mode: "inline",  
 					emptytext:'暂无',
 					validate : function(v) {
@@ -130,11 +130,11 @@ var TableInit = function() {
 			}, 
 			{
 				field : 'alternativeDescription',
-				title : '备用说明',
+				title : 'Description',
 				sortable:true,
 				editable : {
 					type : 'text',
-					title : '备用说明',
+					title : 'Description',
 					mode: "inline",  
 					emptytext:'暂无',
 					validate : function(v) {

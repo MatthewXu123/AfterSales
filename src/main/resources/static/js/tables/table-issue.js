@@ -72,11 +72,11 @@ var TableInit = function() {
 			}, 
 			{
 				field : 'customer.partyName',
-				title : '维修公司'
+				title : '安装公司'
 			}, 
 			{
 				field : 'code',
-				title : '代码'
+				title : '事件代码'
 			}, 
 			{
 				field : 'username',
