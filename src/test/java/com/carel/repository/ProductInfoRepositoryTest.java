@@ -1,6 +1,9 @@
 
 package com.carel.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +37,12 @@ public class ProductInfoRepositoryTest {
 		productInfoRepository.save(productInfo);
 	}
 	
+	@Test
+	@Rollback(value = false)
+	public void testDeleteByIdIn(){
+		List<Integer> ids = new ArrayList<>();
+		ids.add(8);
+		productInfoRepository.deleteByIdIn(ids);
+	}
 	
 }

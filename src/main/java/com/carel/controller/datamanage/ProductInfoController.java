@@ -1,6 +1,9 @@
 
 package com.carel.controller.datamanage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
@@ -54,4 +58,32 @@ public class ProductInfoController extends BaseController{
 		}
 		return listToJsonArray;
 	}
+	
+	@PostMapping("/save")
+	@ResponseBody
+	public JSONObject save(@RequestBody ProductInfo productInfo){
+		try {
+			productInfoService.saveOne(productInfo);
+		} catch (Exception e) {
+			logger.error("", e);
+			return resultFactory.getFailResultJSON();
+		}
+		return resultFactory.getSuccessResultJSON();
+	}
+	
+	@PostMapping("/delete")
+	@ResponseBody
+	public JSONObject delete(@RequestParam String ids){
+		try {
+			List<Integer> idList = new ArrayList<>();
+			for(String id : ids.split(","))
+				idList.add(Integer.valueOf(id));
+			productInfoService.deleteByIdBatch(idList);
+		} catch (Exception e) {
+			logger.error("", e);
+			return resultFactory.getFailResultJSON();
+		}
+		return resultFactory.getSuccessResultJSON();
+	}
+	
 }

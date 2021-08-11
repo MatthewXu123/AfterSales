@@ -1,6 +1,7 @@
 
 package com.carel.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.carel.persistence.entity.product.ProductInfo;
@@ -19,4 +20,6 @@ public interface ProductInfoService {
 	List<ProductInfo> saveAll(List<ProductInfo> productInfoList);
 	
 	List<ProductInfo> getAll();
+	
+	void deleteByIdBatch(Collection<Integer> ids);
 } 

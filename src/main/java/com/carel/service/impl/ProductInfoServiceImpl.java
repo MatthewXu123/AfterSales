@@ -1,6 +1,7 @@
 
 package com.carel.service.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class ProductInfoServiceImpl implements ProductInfoService{
 	@Override
 	public List<ProductInfo> getAll() {
 		return productInfoRepository.findAll();
+	}
+
+	@Override
+	public void deleteByIdBatch(Collection<Integer> ids) {
+		productInfoRepository.deleteByIdIn(ids);
 	}
 
 }
